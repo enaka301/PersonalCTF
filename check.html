@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!--ensuring backward compatibility with ASCII-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows all devices to use-->
+    <title>check</title>
+</head>
+<body>
+    <h1>Welcome to Check!</h1>
+    <p>Here you will check the images provided. Each of them have their own encoding.</p>
+    <p>Do they hold secrets?</p>
+</body>
+<footer>
+    <a href="imageLink.html">
+        <image src="false_key.jpg" alt="Clickable image" width="200"></image>
+    </a>
+    <a href="flag2.txt">
+        <image src="Wendy.jpg" alt="Clickable image" width="200"></image>
+    </a>
+    <a href="flagSuperSecret.txt">
+        <image src="chair.jpg" alt="Clickable image" width="200"></image>
+    </a>
+    <a href="flagSuperSecret.txt">
+        <image src="swedish_fish.jpg" alt="Clickable image" width="200"></image>
+    </a>
+
+    <button onclick="showMessage()">Hint!</button>
+
+    <div hidden id="msg" class="message">
+          We're looking for a pokemon ID as a password.
+    </div>
+  
+    <script>
+      function showMessage() {
+        const msg = document.getElementById('msg');
+        msg.style.display = 'block';
+  
+        // Hide it again after 6 seconds (6000 ms)
+        setTimeout(() => {
+          msg.style.display = 'none';
+        }, 3000);
+      }
+    </script>
+</footer>

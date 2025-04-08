@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!--ensuring backward compatibility with ASCII-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows all devices to use-->
+    <title>titleCheck</title>
+    <h1>You are close! Here's a key.</h1>
+
+    <a href="answer_key.png" download>
+        <img src="answer_key.png" alt="Click to download" width="300">
+      </a>
+    <p>If that doesn't work, here is the link vvv</p>
+    <a href="answer_key.png" download>Download picture</a>
+
+</head>
+<footer>
+    <p>Having trouble? Press the button to get a hint.</p>
+    <div class="button-container">
+        <button onclick="handleFirst()">Hint!</button>
+            <div hidden id="msg" class="message">
+                St3g0; hex
+            </div>
+        <button onclick="handleSecond()">Extra Hint!</button>
+            <div hidden id="msag" class="messages">
+                <img src="0213Shuckle.png" alt="Image of a Pokemon">
+            </div>
+        <button id="greedyBtn" onclick="showMessage3()" class="hidden">Greedy Hint!</button>
+            <div hidden id="msge" class="messagess">
+                You're gonna want the bulbapedia to look up pokemon ID for the password.
+            </div>
+    </div>
+
+    <script>
+    function showMessage() {
+        const msg = document.getElementById('msg');
+        msg.style.display = 'block';
+
+        // Hide it again after 6 seconds (6000 ms)
+        setTimeout(() => {
+            msg.style.display = 'none';
+        }, 3000);
+    }
+    function showMessage2() {
+        const msg2 = document.getElementById('msag');
+        msg2.style.display = 'block';
+  
+        // Hide it again after 6 seconds (6000 ms)
+        setTimeout(() => {
+          msg2.style.display = 'none';
+        }, 3000);
+    }
+    function showMessage3() {
+      const msg3 = document.getElementById('msge');
+      msg3.style.display = 'block';
+
+      // Hide it again after 6 seconds (6000 ms)
+      setTimeout(() => {
+        msg3.style.display = 'none';
+      }, 3000);
+    }
+    </script>
+
+    <script>
+    let pressedFirst = false;
+    let pressedSecond = false;
+
+    function handleFirst() {
+        showMessage();
+        pressedFirst = true;
+        checkBothPressed();
+    }
+
+    function handleSecond() {
+        showMessage2();
+        pressedSecond = true;
+        checkBothPressed();
+    }
+
+    function checkBothPressed() {
+        if (pressedFirst && pressedSecond) {
+        document.getElementById('greedyBtn').classList.remove('hidden');
+        }
+    }
+    </script>
+</footer>

@@ -1,0 +1,109 @@
+body {
+  padding: 25px;
+  background-color: white;
+  color: darkslategray;
+  font-size: medium;
+}
+.dark-mode {
+  background-color: black;
+  color: yellow;
+  h1{
+    color: yellow;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h2{
+    color: yellow;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  p{
+    color: yellow;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+h1 {
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif, Arial, Helvetica, sans-serif;
+  color: orangered;
+  text-align: center;
+}
+h2 {
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-align: center;
+}
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  left: 20%;
+}
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  left: 20%;
+}
+h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  left: 20%;
+}
+button{
+  padding: 10px 20px;
+  margin: 10px;
+}
+p {
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
+  left: 20%;
+}
+head{
+  left: 20%;
+}
+title{
+  color: red;
+  left: 50%;
+  top: 20%;
+}
+footer{
+  text-align: center;
+  text-align: bottom;
+}
+.btn-group button {
+  background-color: lightsalmon; /* Green background */
+  border: 1px solid lightcoral; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px; /* space between buttons */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: lightsalmon;
+}
+.hidden{
+  display: none;
+}

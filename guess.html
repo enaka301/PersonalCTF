@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!--ensuring backward compatibility with ASCII-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows all devices to use-->
+    <title>guess</title>
+</head>
+<body>
+    <h1>Welcome to guess!</h1>
+    <p>There's nothing much here. Still a work in progress.</p>
+</body>
+<footer>
+    <button onclick="showMessage()">No secrets ... yet?</button>
+    <div hidden id="msg" class="message">
+          Well, lucky you. I guess this counts as a hint then.
+          If you don't know your pokemon, the name you are looking for is 'Shuckle'.
+    </div>
+  
+    <script>
+      function showMessage() {
+        const msg = document.getElementById('msg');
+        msg.style.display = 'block';
+  
+        // Hide it again after 6 seconds (6000 ms)
+        setTimeout(() => {
+          msg.style.display = 'none';
+        }, 3000);
+      }
+    </script>
+
+</footer>
