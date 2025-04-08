@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="eng"> <!--add japanese or other language function-->
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!--ensuring backward compatibility with ASCII-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows all devices to use-->
+    <title>personalCTF</title>
+    <body>
+        <h1>Welcome!</h1>
+        <h2>Can you find the flag?</h2> <!--Use web exploitation-->
+        <p>vv To start, click this link vv</p>
+        <a href="flag.txt">Start!</a>
+    </body>
+</head>
+<body>
+    <h6>Goal</h6>
+    <p>Your goal is to find the itc101CTF hidden within the directories in the URL.</p>
+    <h7>Helpful Links</h7>
+    <br>
+    <a href="https://bulbagarden.net/home/">Bulbapedia</a>
+    <p>^Please use the search bar on the right hand side.</p>
+    <a href="https://www.rapidtables.com/convert/number/ascii-to-hex.html">ASCII-Hex converter</a>
+    <br>
+    <a href="https://www.edchart.com/free-online-converters/steganographic-decoder.php">St3g0 decoder</a>
+    <h3>Tags</h3>
+    <p>#StegoDecode #WebExploit #HyperlinkMania #GottaCatchEmAll #Hex #ASCII #HiddenFlag</p>
+    <h4>Category</h4>
+    <p> Web exploitation, Steganography, ASCII-to-hex</p>
+    <h5>Hints</h5>
+    <p>Hints will be scattered through out the game. If you need some hints I'll provide two free of charge!</p>
+    <div class='button-container'>
+        <button onclick="showMessage()">Hint 1</button>
+        <div hidden id="msg" class="message">
+            Going forward, there will be many false keys.
+        </div>
+        <button onclick="showMessage2()">Hint 2</button>
+        <div hidden id="msge" class="message">
+            Sometimes it's not that difficult.
+        </div>
+    </div>
+    <script>
+        function showMessage() {
+            const msg = document.getElementById('msg');
+            msg.style.display = 'block';
+
+            // Hide it again after 6 seconds (6000 ms)
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+        function showMessage2() {
+            const msg3 = document.getElementById('msge');
+            msg3.style.display = 'block';
+    
+            // Hide it again after 6 seconds (6000 ms)
+            setTimeout(() => {
+            msg3.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+<footer>
+    <div id="timer">00:00:00</div>
+    <script>
+        var timer;
+        var timerStart;
+        var timeSpentOnSite = getTimeSpentOnSite();
+
+        function getTimeSpentOnSite(){
+            timeSpentOnSite = parseInt(localStorage.getItem('timeSpentOnSite'));
+            timeSpentOnSite = isNaN(timeSpentOnSite) ? 0 : timeSpentOnSite;
+            return timeSpentOnSite;
+        }
+
+        function startCounting(){
+            timerStart = Date.now();
+            timer = setInterval(function(){
+                timeSpentOnSite = getTimeSpentOnSite()+(Date.now()-timerStart);
+                localStorage.setItem('timeSpentOnSite',timeSpentOnSite);
+                timerStart = parseInt(Date.now());
+                // Convert to seconds
+                console.log(parseInt(timeSpentOnSite/1000));
+            },1000);
+        }
+        startCounting();
+        
+        document.getElementById("timer").textContent = formatTime(timeSpentOnSite);
+        startCounting();
+
+        var stopCountingWhenWindowIsInactive = true; 
+
+        if( stopCountingWhenWindowIsInactive ){
+
+            if( typeof document.hidden !== "undefined" ){
+                var hidden = "hidden", 
+                visibilityChange = "visibilitychange", 
+                visibilityState = "visibilityState";
+            }else if ( typeof document.msHidden !== "undefined" ){
+                var hidden = "msHidden", 
+                visibilityChange = "msvisibilitychange", 
+                visibilityState = "msVisibilityState";
+            }
+            var documentIsHidden = document[hidden];
+
+            document.addEventListener(visibilityChange, function() {
+                if(documentIsHidden != document[hidden]) {
+                    if( document[hidden] ){
+                        // Window is inactive
+                        clearInterval(timer);
+                    }else{
+                        // Window is active
+                        startCounting();
+                    }
+                    documentIsHidden = document[hidden];
+                }
+            });
+        }
+        
+    </script>
+</footer>
