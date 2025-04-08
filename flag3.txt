@@ -1,4 +1,0 @@
-the flag is not here
-    available options:
-        guess.html
-        check.html
