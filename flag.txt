@@ -1,6 +1,0 @@
-flag is not here
-    available options are:
-    /flag2.txt
-    /flag3.txt
-    /flagSecret.txt
-    /flagSuperSecret.txt
