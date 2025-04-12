@@ -25,30 +25,16 @@ body {
 }
 h1 {
   font-size: large;
-  font-family: 'Times New Roman', Times, serif, Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: orangered;
   text-align: center;
 }
-h2 {
+h2,h3,h4,h5,h6,h7 {
   font-size: medium;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  text-align: center;
-}
-h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  left: 20%;
-}
-h4 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  left: 20%;
-}
-h5 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  left: 20%;
+  padding-left: 2.5%;
+  padding-bottom: 0.5%;
 }
 button{
   padding: 10px 20px;
@@ -59,6 +45,7 @@ p {
   font-family: 'Courier New', Courier, monospace;
   font-size: small;
   left: 20%;
+  padding-left: 3%;
 }
 head{
   left: 20%;
@@ -106,4 +93,7 @@ footer{
 }
 .hidden{
   display: none;
+}
+a {
+  padding-left: 4%;
 }

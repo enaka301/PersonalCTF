@@ -18,7 +18,9 @@
     <h7>Helpful Links</h7>
     <br>
     <a href="https://bulbagarden.net/home/">Bulbapedia</a>
-    <p>^Please use the search bar on the right hand side.</p>
+    <p>^Please use the search bar on the right hand side. Or google the pokemon name and ID once found v</p>
+    <a href="https://google.com">Google Search</a>
+    <br>
     <a href="https://www.rapidtables.com/convert/number/ascii-to-hex.html">ASCII-Hex converter</a>
     <br>
     <a href="https://www.edchart.com/free-online-converters/steganographic-decoder.php">St3g0 decoder</a>
@@ -62,59 +64,61 @@
 <footer>
     <div id="timer">00:00:00</div>
     <script>
+        function showMessage() {
+            const msg = document.getElementById('msg');
+            msg.style.display = 'block';
+            setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        }
+
+        function showMessage2() {
+            const msg3 = document.getElementById('msge');
+            msg3.style.display = 'block';
+            setTimeout(() => { msg3.style.display = 'none'; }, 3000);
+        }
+
+        function formatTime(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
+            const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+            const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+            const seconds = String(totalSeconds % 60).padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
         var timer;
         var timerStart;
-        var timeSpentOnSite = getTimeSpentOnSite();
-
-        function getTimeSpentOnSite(){
-            timeSpentOnSite = parseInt(localStorage.getItem('timeSpentOnSite'));
-            timeSpentOnSite = isNaN(timeSpentOnSite) ? 0 : timeSpentOnSite;
-            return timeSpentOnSite;
-        }
+        var timeSpentOnSite = 0;
 
         function startCounting(){
             timerStart = Date.now();
             timer = setInterval(function(){
-                timeSpentOnSite = getTimeSpentOnSite()+(Date.now()-timerStart);
-                localStorage.setItem('timeSpentOnSite',timeSpentOnSite);
-                timerStart = parseInt(Date.now());
-                // Convert to seconds
-                console.log(parseInt(timeSpentOnSite/1000));
-            },1000);
+                timeSpentOnSite += 1000; // increment by 1 second (1000ms)
+                document.getElementById("timer").textContent = formatTime(timeSpentOnSite);
+            }, 1000);
         }
-        startCounting();
-        
-        document.getElementById("timer").textContent = formatTime(timeSpentOnSite);
+
         startCounting();
 
-        var stopCountingWhenWindowIsInactive = true; 
-
-        if( stopCountingWhenWindowIsInactive ){
-
-            if( typeof document.hidden !== "undefined" ){
-                var hidden = "hidden", 
-                visibilityChange = "visibilitychange", 
-                visibilityState = "visibilityState";
-            }else if ( typeof document.msHidden !== "undefined" ){
-                var hidden = "msHidden", 
-                visibilityChange = "msvisibilitychange", 
-                visibilityState = "msVisibilityState";
+        var stopCountingWhenWindowIsInactive = true;
+        if (stopCountingWhenWindowIsInactive) {
+            let hidden, visibilityChange;
+            if (typeof document.hidden !== "undefined") {
+                hidden = "hidden";
+                visibilityChange = "visibilitychange";
+            } else if (typeof document.msHidden !== "undefined") {
+                hidden = "msHidden";
+                visibilityChange = "msvisibilitychange";
             }
-            var documentIsHidden = document[hidden];
-
-            document.addEventListener(visibilityChange, function() {
-                if(documentIsHidden != document[hidden]) {
-                    if( document[hidden] ){
-                        // Window is inactive
+            let documentIsHidden = document[hidden];
+            document.addEventListener(visibilityChange, function () {
+                if (documentIsHidden != document[hidden]) {
+                    if (document[hidden]) {
                         clearInterval(timer);
-                    }else{
-                        // Window is active
+                    } else {
                         startCounting();
                     }
                     documentIsHidden = document[hidden];
                 }
             });
         }
-        
     </script>
 </footer>

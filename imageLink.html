@@ -5,15 +5,16 @@
     <meta charset="UTF-8"> <!--ensuring backward compatibility with ASCII-->
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows all devices to use-->
     <title>titleCheck</title>
+</head>
+<body>
     <h1>You are close! Here's a key.</h1>
 
-    <a href="answer_key.png" download>
+    <a href="hidden_flag.png" download>
         <img src="answer_key.png" alt="Click to download" width="300">
       </a>
     <p>If that doesn't work, here is the link vvv</p>
     <a href="answer_key.png" download>Download picture</a>
-
-</head>
+</body>
 <footer>
     <p>Having trouble? Press the button to get a hint.</p>
     <div class="button-container">
@@ -28,6 +29,8 @@
         <button id="greedyBtn" onclick="showMessage3()" class="hidden">Greedy Hint!</button>
             <div hidden id="msge" class="messagess">
                 You're gonna want the bulbapedia to look up pokemon ID for the password.
+                Pokemon Name: Shuckle
+                Number of Numbers in pw: 4
             </div>
     </div>
 
@@ -57,7 +60,7 @@
       // Hide it again after 6 seconds (6000 ms)
       setTimeout(() => {
         msg3.style.display = 'none';
-      }, 3000);
+      }, 2000);
     }
     </script>
 
@@ -78,9 +81,12 @@
     }
 
     function checkBothPressed() {
-        if (pressedFirst && pressedSecond) {
-        document.getElementById('greedyBtn').classList.remove('hidden');
-        }
+        if (pressedFirst && pressedSecond && !timeoutStarted) {
+                timeoutStarted = true;
+                setTimeout(() => {
+                    document.getElementById('greedyBtn').style.display = 'inline-block';
+                }, 3000); // Show button after 3 seconds
+            }
     }
     </script>
 </footer>
